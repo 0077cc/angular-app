@@ -1,9 +1,13 @@
 <div class="products" style="text-align: center;">
+    <app-product-search 
+        (search)="search($event)">
+    </app-product-search>
+    
     <app-product-list
         [products]="products"
         (deleteProduct)="deleteProduct($event)"
         (changeState)="changeState($event)"
     ></app-product-list>
 
-    <a routerLink="/nuevo-producto" class="button">Nuevo Producto</a>
+    <a routerLink="/nuevo-producto" class="button is-info">Nuevo Producto</a>
 </div>

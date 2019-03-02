@@ -13,6 +13,7 @@ import { ProductEditComponent } from './products/product-edit/product-edit.compo
 import { ProductCreateComponent } from './products/product-create/product-create.component';
 import { routes } from './app.routing';
 import { ProductService } from './services/product.service';
+import { ProductSearchComponent } from './products/product-search/product-search.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProductService } from './services/product.service';
     ProductFormComponent,
     ProductsComponent,
     ProductEditComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductSearchComponent
   ],
   imports: [
     BrowserModule,

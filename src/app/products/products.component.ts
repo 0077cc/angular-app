@@ -41,4 +41,12 @@ export class ProductsComponent implements OnInit {
             }
         })
     }
+
+    search(texto:string){
+        this.productService.getProducts().subscribe(
+            (response:Product[]) => {
+                this.products=response.filter(prod => prod.name.toUpperCase().includes(texto.toUpperCase()) );
+            }
+        );
+    }
 }
