@@ -8,10 +8,14 @@ import { Product } from '../product.model';
     templateUrl: './product-create.component.html'
 })
 export class ProductCreateComponent {
+    newProduct:Product=new Product();
+
     constructor(private router: Router,
                 private productService: ProductService) {}
 
     handleSubmit(product: Product) {
+        product.urlImage="https://via.placeholder.com/100/771796";//por defecto
+        
         this.productService.createProduct(product)
              .subscribe(response => {
                  this.router.navigate(['/productos']);
