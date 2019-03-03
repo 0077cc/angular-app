@@ -9,5 +9,11 @@
         (changeState)="changeState($event)"
     ></app-product-list>
 
+    <app-confirm-modal
+        [isActive]="isActive"
+        [question]="question"
+        (response)="onResponse($event)"
+    ></app-confirm-modal>
+
     <a routerLink="/nuevo-producto" class="button is-info">Nuevo Producto</a>
 </div>

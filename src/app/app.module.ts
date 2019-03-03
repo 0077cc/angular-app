@@ -19,6 +19,7 @@ import { CategoryService } from './services/category.service';
 import { ShortTextPipe } from './pipes/short-text.pipe';
 import { TitlePipe } from './pipes/title.pipe';
 import { LoginComponent } from './components/login/login.component';
+import { ConfirmModalComponent } from './components/modals/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoginComponent } from './components/login/login.component';
     ProductSearchComponent,
     ShortTextPipe,
     TitlePipe,
-    LoginComponent
+    LoginComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
