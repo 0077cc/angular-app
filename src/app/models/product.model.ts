@@ -5,4 +5,5 @@ export class Product {
     description: string;
     urlImage: string;
     actived: boolean;
+    categoryId: string;
 }

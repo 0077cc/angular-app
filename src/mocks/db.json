@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "name": "Javascript: The good parts",
+      "description": "Libro de Javascript wqeqewewqeqweqwewqewqewq",
+      "urlImage": "",
+      "categoryId": "C1",
+      "actived": "true",
+      "price": 10,
+      "id": 1
+    },
+    {
+      "categoryId": "C3",
+      "name": "Samsung Galaxy A9",
+      "description": "Cuadruplica la diversión con la primera cámara cuádruple del mundo",
+      "price": "999.99",
+      "actived": "false",
+      "urlImage": "https://via.placeholder.com/100/771796",
+      "id": 2
+    }
+  ],
+  "categories": [
+    {
+      "id": "C1",
+      "name": "Libros"
+    },
+    {
+      "id": "C2",
+      "name": "Accesorios"
+    },
+    {
+      "id": "C3",
+      "name": "Celulares"
+    }
+  ]
+}

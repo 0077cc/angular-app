@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="title">Login</h2>
+    <form [formGroup]="formLogin">
+        <div class="field"
+            [class.is-invalid]=
+            "formLogin.controls.email.invalid && formLogin.controls.email.touched">
+            <label class="label">Email:</label>
+            <div class="control">
+                <input formControlName="email" class="input" type="text" />
+            </div>
+        </div>
+
+        <div class="field"
+            [class.is-invalid]=
+            "formLogin.controls.password.invalid && formLogin.controls.password.touched">
+            <label class="label">Contraseña:</label>
+            <div class="control">
+                <input formControlName="password" class="input" type="password" />
+            </div>
+        </div>
+        {{ formLogin.controls.password.errors | json }}
+
+        <div class="field">
+            <div class="control">
+                <button
+                [disabled]="formLogin.invalid"
+                class="button is-success"
+                (click)="onClick()">Ingresar</button>
+            </div>
+        </div>
+    </form>
+</div>

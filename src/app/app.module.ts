@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -14,6 +15,10 @@ import { ProductCreateComponent } from './products/product-create/product-create
 import { routes } from './app.routing';
 import { ProductService } from './services/product.service';
 import { ProductSearchComponent } from './products/product-search/product-search.component';
+import { CategoryService } from './services/category.service';
+import { ShortTextPipe } from './pipes/short-text.pipe';
+import { TitlePipe } from './pipes/title.pipe';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,15 +29,19 @@ import { ProductSearchComponent } from './products/product-search/product-search
     ProductsComponent,
     ProductEditComponent,
     ProductCreateComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
+    ShortTextPipe,
+    TitlePipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

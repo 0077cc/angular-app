@@ -1,5 +1,6 @@
 <div class="product-edit">
-    <app-product-form
+    <app-product-form *ngIf="product"
         [product]="product"
-        (handleSubmit)="handleSubmit($event)"></app-product-form>
+        (handleSubmit)="handleSubmit($event)">
+    </app-product-form>
 </div>

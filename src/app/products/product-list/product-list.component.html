@@ -1,23 +1,18 @@
-<div class="container">
+<div class="container" *ngIf="show">
   <div *ngIf="products.length; else empty">
         <table class="table is-striped">
             <thead>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Imagen</th>
-                <th>Precio</th>
-                <th>Detalle</th>
-                <th>Acciones</th>
+                <th *ngFor="let item of titles">
+                    {{ item | title }}
+                </th>
             </thead>
             <tbody>
                 <tr *ngFor="let prod of products">
                     <td>{{ prod.id }}</td>
-                    <td>{{ prod.name }}</td>
-                    <td>
-                        <img [src]="prod.urlImage" alt="">
-                    </td>
-                    <td>{{prod.price | currency:'S/.'}}</td>
-                    <td>{{prod.description}}</td>
+                    <td>{{ prod.name | shortText: 15 }}</td>
+                    <td>{{ getCategoryName(prod.categoryId) }}</td>
+                    <td>{{ prod.price | currency:'S/.'}}</td>
+                    <td>{{ prod.description | shortText: 35 }}</td>
                     <td>
                         <button [disabled]="!prod.actived" class="button is-small is-success" (click)="handleUpdate(prod.id)">Actualizar</button>
                         <button class="button is-small is-link" (click)="handleState(prod)">
