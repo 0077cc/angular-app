@@ -11,7 +11,8 @@ export class ProductsComponent implements OnInit {
     question: string;
     isActive: boolean;
     products: Product[];
-    productToDelete: Product;
+	productToDelete: Product;
+	allProducts: Product[];
 
     constructor(private productService: ProductService) {}
 
@@ -25,7 +26,8 @@ export class ProductsComponent implements OnInit {
     private getProducts() {
         this.productService.getProducts()
             .subscribe((products: Product[]) => {
-                this.products = products;
+				this.products = products;
+				this.allProducts = products;
             });
     }
 
@@ -44,7 +46,8 @@ export class ProductsComponent implements OnInit {
             this.productService.deleteProduct(id)
                 .subscribe(response => {
                     this.products = this.products
-                        .filter(prod => prod.id !== id);
+						.filter(prod => prod.id !== id);
+					this.allProducts = this.products.slice();
                     this.isActive = false;
                 });
         } else {
@@ -62,10 +65,12 @@ export class ProductsComponent implements OnInit {
     }
 
     search(texto:string){
-        this.productService.getProducts().subscribe(
-            (response:Product[]) => {
-                this.products=response.filter(prod => prod.name.toUpperCase().includes(texto.toUpperCase()) );
-            }
-        );
-    }
+		if (texto) {
+			this.products = this.allProducts.filter(prod => {
+				return prod.name.toLowerCase().includes(texto.toLowerCase());
+			});
+		} else {
+			this.products = this.allProducts;
+		}
+	}
 }

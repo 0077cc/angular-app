@@ -2,12 +2,57 @@
   "products": [
     {
       "categoryId": "C1",
-      "name": "BulmaCSS",
-      "description": "Bulma is a free, open source CSS framework based on Flexbox and used by more than 150,000 developers.",
-      "price": "0",
+      "name": "Eloquent JavaScript",
+      "price": "29.95",
       "actived": "true",
+      "description": "This is a book about JavaScript, programming, and the wonders of the digital.\nhttps://eloquentjavascript.net/",
       "urlImage": "https://via.placeholder.com/100/771796",
       "id": 1
+    },
+    {
+      "categoryId": "C1",
+      "name": "JavaScript: The Good Parts",
+      "description": "This is a book about the JavaScript programming language. It is intended for programmers who, by happenstance or curiosity, are venturing into JavaScript for the first time. It is also intended for programmers who have been working with JavaScript at a novice level and are now ready for a more sophisticated relationship with the language. JavaScript is a surprisingly powerful language. Its presents some challenges, but being a small language, it is easily mastered.",
+      "price": "17.94",
+      "actived": "true",
+      "urlImage": "https://via.placeholder.com/100/771796",
+      "id": 2
+    },
+    {
+      "categoryId": "C1",
+      "name": "You Dont Know JS",
+      "description": "This is a series of books diving deep into the core mechanisms of the JavaScript language. The first edition of the series is now complete.\nhttps://github.com/getify/You-Dont-Know-JS",
+      "price": "100",
+      "actived": "true",
+      "urlImage": "https://via.placeholder.com/100/771796",
+      "id": 3
+    },
+    {
+      "categoryId": "C1",
+      "name": "Creating interfaces with Bulma",
+      "description": "Build an interface with Bulma components, customize it with Sass, and learn how to integrate it with your favourite JS environment",
+      "price": "22.99",
+      "actived": "true",
+      "urlImage": "https://via.placeholder.com/100/771796",
+      "id": 4
+    },
+    {
+      "categoryId": "C1",
+      "name": "Understanding ECMAScript 6",
+      "description": "ECMAScript 6 is coming, are you ready? There's a lot of new concepts to learn and understand. \nhttps://leanpub.com/understandinges6",
+      "price": "24.99",
+      "actived": "true",
+      "urlImage": "https://via.placeholder.com/100/771796",
+      "id": 5
+    },
+    {
+      "categoryId": "C1",
+      "name": "The Angular Firebase Survival Guide",
+      "description": "Build Angular Apps on a Solid Foundation with Firebase.\nhttps://leanpub.com/angularfirebase",
+      "price": "14.99",
+      "actived": "true",
+      "urlImage": "https://via.placeholder.com/100/771796",
+      "id": 6
     }
   ],
   "categories": [

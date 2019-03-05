@@ -4,8 +4,6 @@ import { State } from 'src/app/app.enums';
 import { Router } from '@angular/router';
 
 function hasANumberDigit({ value }: AbstractControl) {
-    console.log('hasANumberDigit >', value);
-    
     const regexp = /(.*?[0-9])/;
 
     if (regexp.test(value)) {
@@ -37,10 +35,7 @@ export class LoginComponent implements OnInit {
                 hasANumberDigit
             ]),
             
-        },
-        [hasANumberDigit]);
-
-        console.log(this.formLogin);
+        });
     }
 
     onClick() {
@@ -48,8 +43,6 @@ export class LoginComponent implements OnInit {
             email,
             password
         } = this.formLogin.value;
-
-        console.log(email, password);
         this.router.navigate(['productos']);
     }
 }

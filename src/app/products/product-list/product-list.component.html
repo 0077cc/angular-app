@@ -9,15 +9,15 @@
             <tbody>
                 <tr *ngFor="let prod of products">
                     <td>{{ prod.id }}</td>
-                    <td>{{ prod.name | shortText: 15 }}</td>
+                    <td>{{ prod.name | shortText: 25 }}</td>
                     <td>{{ getCategoryName(prod.categoryId) }}</td>
-                    <td>{{ prod.price | currency:'S/.'}}</td>
-                    <td>{{ prod.description | shortText: 35 }}</td>
+                    <td>{{ prod.price | currency: 'USD.'}}</td>
+                    <td>{{ prod.description | shortText: 45 }}</td>
                     <td>
-                        <button [disabled]="!prod.actived" class="button is-small is-success" (click)="handleUpdate(prod.id)">Actualizar</button>
-                        <button class="button is-small is-link" (click)="handleState(prod)">
+                        <button [disabled]="!prod.actived" class="button is-small is-success" (click)="handleUpdate(prod.id)">Editar</button>
+                        <!-- <button class="button is-small is-link" (click)="handleState(prod)">
                             {{ prod.actived ? 'Desabilitar' : 'Habilitar' }}
-                        </button>
+                        </button> -->
                         <button [disabled]="!prod.actived" class="button is-small is-danger" (click)="handleDelete(prod)">Eliminar</button>
                     </td>
                 </tr>
