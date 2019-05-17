@@ -10,67 +10,63 @@ import { State } from '../app.enums';
 export class ProductsComponent implements OnInit {
     question: string;
     isActive: boolean;
-    products: Product[];
-	productToDelete: Product;
-	allProducts: Product[];
+    products: Array<Product>;
+    productToDelete: Product;
+    allProducts: Array<Product>;
 
-    constructor(private productService: ProductService) {}
+    constructor(private productService: ProductService) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.products = [];
-        this.isActive = false;
-        this.question = State.empty
-        this.getProducts();        
+        this.question = State.empty;
+        this.getProducts();
     }
 
-    private getProducts() {
+    private getProducts(): void {
         this.productService.getProducts()
-            .subscribe((products: Product[]) => {
-				this.products = products;
-				this.allProducts = products;
+            .subscribe((products: Array<Product>) => {
+                this.products = products;
+                this.allProducts = products;
             });
     }
 
-    deleteProduct(product: Product) {
-        this.question = `
-            ¿Esta seguro que desea eliminar el producto <b>"${product.name}"</b>?
-        `;
+    deleteProduct(product: Product): void {
+        this.question = `¿Esta seguro que desea eliminar el producto <b>'${product.name}'</b>?`;
         this.isActive = true;
         this.productToDelete = product;
     }
 
-    onResponse(confirmation: boolean) {
+    onResponse(confirmation: boolean): void {
         if (confirmation) {
             const { id } = this.productToDelete;
 
             this.productService.deleteProduct(id)
-                .subscribe(response => {
+                .subscribe(() => {
                     this.products = this.products
-						.filter(prod => prod.id !== id);
-					this.allProducts = this.products.slice();
+                        .filter(prod => prod.id !== id);
+                    this.allProducts = this.products.slice();
                     this.isActive = false;
                 });
         } else {
             this.isActive = false;
         }
-
     }
 
-    changeState(product: Product) {
-        this.products.map(prod => {
-            if (prod.id === product.id) {
-                prod.actived = !prod.actived;
-            }
-        })
+    changeState(product: Product): void {
+        const prod = this.products.find(p => p.id === product.id);
+        prod.actived = !prod.actived;
+
+        this.productService.updateProduct(prod.id, prod)
+            .subscribe(productUpdated => {
+                this.products
+                    .map(p => { p.id === productUpdated.id ? p.actived = productUpdated.actived
+                        : p.actived = p.actived; });
+            });
     }
 
-    search(texto:string){
-		if (texto) {
-			this.products = this.allProducts.filter(prod => {
-				return prod.name.toLowerCase().includes(texto.toLowerCase());
-			});
-		} else {
-			this.products = this.allProducts;
-		}
-	}
+    search(texto: string): void {
+        this.products = texto ? this.allProducts
+            .filter(p => p.name.toLowerCase().includes(texto.toLowerCase()))
+                : this.allProducts;
+    }
 }

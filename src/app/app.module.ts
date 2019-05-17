@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductFormComponent } from './components/forms/product-form/product-form.component';
-import { ProductsComponent} from './products/products.component';
+import { ProductsComponent } from './products/products.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { ProductCreateComponent } from './products/product-create/product-create.component';
 import { routes } from './app.routing';

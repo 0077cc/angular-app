@@ -6,25 +6,23 @@ import { State } from '../../../app.enums';
 
 @Component({
     selector: 'app-product-form',
-    templateUrl: './product-form.component.html' 
+    templateUrl: './product-form.component.html'
 })
 export class ProductFormComponent implements OnInit {
-    categories: Category[];
+    categories: Array<Category>;
 
     @Input() product: Product;
 
     @Output() handleSubmit: EventEmitter<Product> = new EventEmitter<Product>();
-    
+
     constructor(private categoryService: CategoryService) {}
 
     ngOnInit() {
         this.categories = [];
         this.product.categoryId = this.product.categoryId || State.empty;
-        
+
         this.categoryService.getCategories()
-        .subscribe((response: Category[]) => {
-            this.categories = response;
-        })
+            .subscribe((response: Array<Category>) => this.categories = response);
     }
 
     onSubmit(f: any) {

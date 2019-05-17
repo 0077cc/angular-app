@@ -12,11 +12,11 @@ export class ConfirmModalComponent implements OnInit {
 
     @Output() response: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    constructor() {}
+    constructor() { }
 
-    ngOnInit() {}
+    ngOnInit(): void { }
 
-    onClick(confirmation: boolean) {
+    onClick(confirmation: boolean): void {
         this.response.emit(confirmation);
     }
 }

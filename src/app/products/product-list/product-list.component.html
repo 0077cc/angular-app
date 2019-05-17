@@ -1,24 +1,37 @@
 <div class="container" *ngIf="show">
   <div *ngIf="products.length; else empty">
-        <table class="table is-striped">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <th *ngFor="let item of titles">
                     {{ item | title }}
                 </th>
             </thead>
             <tbody>
-                <tr *ngFor="let prod of products">
+                <tr *ngFor="let prod of products" [ngClass]="{'unactived': !prod.actived}">
                     <td>{{ prod.id }}</td>
                     <td>{{ prod.name | shortText: 25 }}</td>
                     <td>{{ getCategoryName(prod.categoryId) }}</td>
                     <td>{{ prod.price | currency: 'USD.'}}</td>
                     <td>{{ prod.description | shortText: 45 }}</td>
                     <td>
-                        <button [disabled]="!prod.actived" class="button is-small is-success" (click)="handleUpdate(prod.id)">Editar</button>
-                        <!-- <button class="button is-small is-link" (click)="handleState(prod)">
-                            {{ prod.actived ? 'Desabilitar' : 'Habilitar' }}
-                        </button> -->
-                        <button [disabled]="!prod.actived" class="button is-small is-danger" (click)="handleDelete(prod)">Eliminar</button>
+                        <button [disabled]="!prod.actived" class="button is-small is-success" (click)="handleUpdate(prod.id)">
+                            <span class="icon is-small">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                        </button>
+                        <button [disabled]="!prod.actived" class="button is-small is-danger" (click)="handleDelete(prod)">
+                            <span class="icon is-small">
+                                <i class="fas fa-trash-alt"></i>
+                            </span>
+                        </button>
+                        <button class="button is-small is-link" (click)="handleState(prod)">
+                            <span *ngIf="prod.actived" class="icon is-small">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span *ngIf="!prod.actived" class="icon is-small">
+                                <i  class="fas fa-lock-open"></i>
+                            </span>
+                        </button>
                     </td>
                 </tr>
             </tbody>

@@ -23,3 +23,7 @@
 	margin: 0 3px;
 	width: 60px;
 }
+
+.unactived {
+	background: lightgray !important;
+}

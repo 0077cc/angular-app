@@ -6,13 +6,8 @@ import { Router } from '@angular/router';
 function hasANumberDigit({ value }: AbstractControl) {
     const regexp = /(.*?[0-9])/;
 
-    if (regexp.test(value)) {
-        return null;
-    } else {
-        return { hasNoNumber: true };
-    }
+    return regexp.test(value) ? null : { hasNoNumber: true };
 }
-
 
 @Component({
     selector: 'app-login',
@@ -20,8 +15,9 @@ function hasANumberDigit({ value }: AbstractControl) {
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    formLogin;
-    constructor(private router: Router) {}
+    formLogin: FormGroup;
+
+    constructor(private router: Router) { }
 
     ngOnInit() {
         this.formLogin = new FormGroup({
@@ -34,15 +30,11 @@ export class LoginComponent implements OnInit {
                 Validators.minLength(8),
                 hasANumberDigit
             ]),
-            
         });
     }
 
     onClick() {
-        const {
-            email,
-            password
-        } = this.formLogin.value;
+        const { email, password } = this.formLogin.value;
         this.router.navigate(['productos']);
     }
 }

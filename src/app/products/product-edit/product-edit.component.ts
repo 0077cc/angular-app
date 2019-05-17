@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router/'
+import { ActivatedRoute, Router } from '@angular/router/';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 
@@ -9,21 +9,20 @@ import { Product } from '../../models/product.model';
 })
 export class ProductEditComponent implements OnInit {
     product: Product;
-    constructor(private route: ActivatedRoute,
-                private router: Router,
-                private productService: ProductService) {}
 
-    ngOnInit() {
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private productService: ProductService) { }
+
+    ngOnInit(): void {
         const id = +this.route.snapshot.paramMap.get('id');
-        this.productService.getProductById(id).subscribe((product: Product) => {
-            this.product = product;
-        })
+        this.productService.getProductById(id)
+            .subscribe((product: Product) => this.product = product);
     }
 
-    handleSubmit(product: Product) {
+    handleSubmit(product: Product): void {
         this.productService.updateProduct(product.id, product)
-             .subscribe(response => {
-                 this.router.navigate(['/productos']);
-             });
+            .subscribe(() => this.router.navigate(['/productos']));
     }
 }

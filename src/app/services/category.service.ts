@@ -3,31 +3,25 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 import { Category } from '../models/catgory.model';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class CategoryService {
     readonly baseUrl: string = environment.api;
-    private categories: Category[];
+    private categories: Array<Category>;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    getCategories() {
+    getCategories(): Observable<Array<Category>> {
         const fullUrl = `${this.baseUrl}/categories`;
 
-        if (this.categories) {
-            return of(this.categories);
-        }
-
-        return this.http.get(fullUrl).pipe(
-            tap((response: Category[]) => {
-               this.categories = response;
-            })
-        )
+        return this.categories ? of(this.categories)
+            : this.http.get(fullUrl)
+                .pipe(tap((response: Array<Category>) => this.categories = response ));
     }
 
-    get categoryList() {
+    get categoryList(): Array<Category> {
         return this.categories;
     }
 }
